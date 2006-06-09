@@ -1,0 +1,33 @@
+# List of source files containing translatable strings.
+
+## Created by Anjuta - will be overwritten
+## If you don't want it to overwrite it,
+## 	Please disable it in the Anjuta project configuration
+
+# Source files
+src/CContact.cc
+src/CContactList.cc
+src/CGroup.cc
+src/CPopup.cc
+src/chl.c
+src/msncon.cxx
+src/CData.cc
+src/CConsole.cxx
+src/CSsl.cxx
+src/CGui.cxx
+src/CMsnAuth.cxx
+src/CParseSocket.cxx
+src/md5.c
+src/sha1.c
+src/Utils.cxx
+src/CChatFrame.cxx
+src/CChatTab.cxx
+src/CChatArea.cc
+src/CEntryText.cc
+src/CContactFrame.cxx
+src/CConnectPanel.cxx
+src/CChatHandler.cxx
+src/CCoreHandler.cxx
+src/CListEvent.cxx
+
+

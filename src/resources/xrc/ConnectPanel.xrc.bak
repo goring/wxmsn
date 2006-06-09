@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
+    <object class="wxFrame" name="ID_FRAME" subclass="CContactFrame">
+        <style>wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX</style>
+        <size>350,480</size>
+        <title>CContactFrame</title>
+        <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+                <flag>wxALIGN_CENTER_HORIZONTAL|wxALL</flag>
+                <border>5</border>
+                <object class="wxStatusBar" name="ID_STATUSBAR">
+                    <style>wxST_SIZEGRIP|wxNO_BORDER</style>
+                    <fields>2</fields>
+                    <widths></widths>
+                </object>
+            </object>
+        </object>
+    </object>
+    <object class="wxPanel" name="ConnectPanel" subclass="CConnectPanel">
+        <object class="wxBoxSizer">
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+                <flag>wxGROW|wxALL</flag>
+                <border>5</border>
+                <option>1</option>
+                <object class="wxStaticBoxSizer" name="wxID_ANY">
+                    <orient>wxVERTICAL</orient>
+                    <label>Select profile</label>
+                    <object class="sizeritem">
+                        <flag>wxALIGN_CENTER_HORIZONTAL|wxALL|wxADJUST_MINSIZE</flag>
+                        <border>5</border>
+                        <object class="wxBitmapButton" name="ConnectButtonId">
+                            <tooltip>Click here to get connected</tooltip>
+                            <style>wxBU_AUTODRAW|wxBU_EXACTFIT|wxNO_BORDER</style>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL|wxADJUST_MINSIZE</flag>
+                        <border>5</border>
+                        <option>1</option>
+                        <object class="wxComboBox" name="ProfileSelectionComboId">
+                            <size>300,-1</size>
+                            <tooltip>Choose your profile here, or create a new one</tooltip>
+                            <style>wxCB_DROPDOWN</style>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxBoxSizer">
+                            <orient>wxHORIZONTAL</orient>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL|wxADJUST_MINSIZE</flag>
+                                <border>5</border>
+                                <object class="wxStaticText" name="wxID_ANY">
+                                    <label>Password :</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxALIGN_CENTER_VERTICAL|wxALL|wxADJUST_MINSIZE</flag>
+                                <border>5</border>
+                                <option>1</option>
+                                <object class="wxTextCtrl" name="PasswordTextCtrlId">
+                                    <tooltip>Enter your password here</tooltip>
+                                    <style>wxTE_PASSWORD</style>
+                                </object>
+                            </object>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxALIGN_CENTER_HORIZONTAL|wxALL|wxADJUST_MINSIZE</flag>
+                        <border>5</border>
+                        <object class="wxCheckBox" name="PasswordKeepCheckboxId">
+                            <tooltip>Check to make wxMSN remember your password</tooltip>
+                            <style>wxCHK_2STATE</style>
+                            <label>Keep my password</label>
+                            <checked>0</checked>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL|wxADJUST_MINSIZE</flag>
+                        <border>5</border>
+                        <object class="wxChoice" name="InitialStatusChoiceId">
+                            <tooltip>Select your initial status</tooltip>
+                            <content>
+                                <item>On line</item>
+                                <item>Busy</item>
+                                <item>Idle</item>
+                                <item>Be right back</item>
+                                <item>Away</item>
+                                <item>On phone</item>
+                                <item>Out to lunch</item>
+                                <item>Appear offline</item>
+                            </content>
+                        </object>
+                    </object>
+                    <object class="sizeritem">
+                        <flag>wxGROW|wxALL</flag>
+                        <border>5</border>
+                        <object class="wxBoxSizer">
+                            <orient>wxHORIZONTAL</orient>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL|wxADJUST_MINSIZE</flag>
+                                <border>5</border>
+                                <object class="wxButton" name="NewProfileButtonId">
+                                    <tooltip>Click here to create a new profile</tooltip>
+                                    <style>wxBU_EXACTFIT</style>
+                                    <label>New</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL|wxADJUST_MINSIZE</flag>
+                                <border>5</border>
+                                <object class="wxButton" name="ModifyProfileButtonId">
+                                    <tooltip>Click here to modify your profile</tooltip>
+                                    <style>wxBU_EXACTFIT</style>
+                                    <label>Modify</label>
+                                </object>
+                            </object>
+                            <object class="sizeritem">
+                                <flag>wxGROW|wxALL|wxADJUST_MINSIZE</flag>
+                                <border>5</border>
+                                <object class="wxButton" name="DeleteProfileButtonId">
+                                    <tooltip>Click here to delete a profile</tooltip>
+                                    <style>wxBU_EXACTFIT</style>
+                                    <label>Delete</label>
+                                </object>
+                            </object>
+                        </object>
+                    </object>
+                </object>
+            </object>
+        </object>
+    </object>
+</resource>

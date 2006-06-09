@@ -1,0 +1,47 @@
+#   Copyright (c) 2005 Neil "Superna" ARMSTRONG
+#   This file is part of wxMSN.
+#
+#   wxMSN is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   wxMSN is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with wxMSN; if not, write to the Free Software
+#   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+#
+#   XMMS Plugin Builder, to build for BMP add "-f Makefile-BMP"
+#
+#   You'll need development files for xmms, like the xmms-config script
+#   To compile, simply : make
+#   To install into the system path : make install
+#   To install for yourself : make localinstall
+#   To install to a user : make localinstall USER=toto
+#
+
+NAME = wxmsnxmms
+
+CC = gcc `xmms-config --cflags` -fPIC -c 
+LD = gcc `xmms-config --libs` -fPIC -shared -o $(NAME).so
+INST = cp $(NAME).so `xmms-config --general-plugin-dir`
+LOCALINST = cp $(NAME).so ~$(USER)/.xmms/Plugins
+
+$(NAME).so:$(NAME).o
+	$(LD) $(NAME).o
+
+$(NAME).o:$(NAME).c
+	$(CC) $(NAME).c
+
+install:$(NAME).so
+	$(INST)
+
+localinstall:$(NAME).so
+	$(LOCALINST)
+
+clean:
+	-rm *.o *.so
