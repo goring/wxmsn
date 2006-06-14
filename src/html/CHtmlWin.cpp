@@ -910,9 +910,15 @@ void CHtmlWindow::OnInternalIdle()
             CHtmlLinkInfo *lnk = cell ? cell->GetLink(x, y) : NULL;
             wxCursor cur;
             if (cell)
-                cur = cell->GetCursor();
+            {
+     //           if (lnk)// || IsSelectionEnabled())
+                   cur = cell->GetCursor();
+     //           else
+      //             cur = *wxSTANDARD_CURSOR;
+            }
             else
                 cur = *wxSTANDARD_CURSOR;
+            
             SetCursor(cur);
 
             if (lnk != m_tmpLastLink)
@@ -1124,6 +1130,28 @@ void CHtmlWindow::SelectAll()
     }
 }
 
+void CHtmlWindow::AssignIntDataToCells(const int data, const CHtmlCell* StartCell, const CHtmlCell* EndCell)
+{
+	CHtmlCell* CurrentCell = wxConstCast(StartCell, CHtmlCell);
+	while(CurrentCell != NULL && CurrentCell != EndCell) 
+	{
+		AssignIntDataToCells(data, CurrentCell->GetFirstChild(), EndCell);
+		CurrentCell->SetDataInt(data);
+		CurrentCell = CurrentCell->GetNext();
+	}
+}
+
+
+void CHtmlWindow::AssignPtrDataToCells(const void* data, const CHtmlCell* StartCell, const CHtmlCell* EndCell)
+{
+	CHtmlCell* CurrentCell = wxConstCast(StartCell, CHtmlCell);
+	while(CurrentCell != NULL && CurrentCell != EndCell) 
+	{
+		AssignPtrDataToCells(data, CurrentCell->GetFirstChild(), EndCell);
+		CurrentCell->SetDataPtr(wxConstCast(data, void));
+		CurrentCell = CurrentCell->GetNext();
+	}
+}
 #endif // wxUSE_CLIPBOARD
 
 

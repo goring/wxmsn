@@ -356,7 +356,10 @@ void CHtmlWinParser::AddText(const wxChar* txt)
             c = new CHtmlWordCell(temp, *(GetDC()));
             cspace = new CHtmlWordCell(wxT(' '), *(GetDC()));
             if (m_UseLink)
+            {
                 c->SetLink(m_Link);
+                cspace->SetLink(m_Link);
+            }
             m_Container->InsertCell(c);
             m_Container->InsertCell(cspace);
             ((CHtmlWordCell*)c)->SetPreviousWord(m_lastWordCell);

@@ -86,8 +86,6 @@ CLASS::CLASS(wxWindow* Parent, CData* Data) : CHtmlWindow(Parent, -1, wxDefaultP
 	
 	// Sets some other variables
 	BrowserCommand = wxT("firefox");
-	ArrowCursor = wxCursor(wxCURSOR_ARROW);
-	HandCursor = wxCursor(wxCURSOR_HAND);
 	MustReparse = true;
 }
 
@@ -457,30 +455,6 @@ void CLASS::SetParseURLs(bool Parse)
 }
 
 
-void CLASS::AssignIntDataToCells(const int data, const CHtmlCell* StartCell, const CHtmlCell* EndCell)
-{
-	CHtmlCell* CurrentCell = wxConstCast(StartCell, CHtmlCell);
-	while(CurrentCell != NULL && CurrentCell != EndCell) 
-	{
-		AssignIntDataToCells(data, CurrentCell->GetFirstChild(), EndCell);
-		CurrentCell->SetDataInt(data);
-		CurrentCell = CurrentCell->GetNext();
-	}
-}
-
-
-void CLASS::AssignPtrDataToCells(const void* data, const CHtmlCell* StartCell, const CHtmlCell* EndCell)
-{
-	CHtmlCell* CurrentCell = wxConstCast(StartCell, CHtmlCell);
-	while(CurrentCell != NULL && CurrentCell != EndCell) 
-	{
-		AssignPtrDataToCells(data, CurrentCell->GetFirstChild(), EndCell);
-		CurrentCell->SetDataPtr(wxConstCast(data, void));
-		CurrentCell = CurrentCell->GetNext();
-	}
-}
-
-
 void CLASS::OnLeftClick(wxMouseEvent& MouseEvent)
 {	
 	if(ContactInfoPopup != NULL)
@@ -669,24 +643,6 @@ void CLASS::OnMouseMove(wxMouseEvent& MouseEvent)
 	else
 	{
 		HoverTimer.Stop();
-	}
-
-	int x, y;
-	CalcUnscrolledPosition(MouseEvent.GetX(), MouseEvent.GetY(), &x, &y);
-	CHtmlCell* ParentCell = wx_static_cast(CHtmlCell*, GetInternalRepresentation());
-	if(ParentCell->GetLink(x, y) != NULL)
-	{
-		if(GetCursor() != HandCursor)
-		{
-			SetCursor(HandCursor);
-		}
-	}
-	else
-	{
-		if(GetCursor() != ArrowCursor)
-		{
-			SetCursor(ArrowCursor);
-		}
 	}
 }
 

@@ -82,9 +82,6 @@ class CData;
 		private:
 			CData*			LinkedData;
 
-			void 			AssignIntDataToCells(const int data, const CHtmlCell* StartCell, const CHtmlCell* EndCell);
-			void 			AssignPtrDataToCells(const void* data, const CHtmlCell* StartCell, const CHtmlCell* EndCell);
-
 			wxString		SelfHtmlPattern;
 			wxString		ContactHtmlPattern;
 			wxString		GroupHtmlPattern;
@@ -102,8 +99,6 @@ class CData;
 			bool 			MustReparse;
 			bool			DisplayEmptyGroups;
 			wxString		BrowserCommand;
-			wxCursor		ArrowCursor;
-			wxCursor		HandCursor;
 			GroupArray		DisplayedGroups;
 			ContactArray	DisplayedContacts;
 			CContact*		DisplayedSelf;

@@ -243,6 +243,8 @@ protected:
     void StopAutoScrolling();
 #endif // wxUSE_CLIPBOARD
 
+	void AssignIntDataToCells(const int data, const CHtmlCell* StartCell, const CHtmlCell* EndCell);
+	void AssignPtrDataToCells(const void* data, const CHtmlCell* StartCell, const CHtmlCell* EndCell);
 protected:
     wxString DoSelectionToText(CHtmlSelection *sel);
 

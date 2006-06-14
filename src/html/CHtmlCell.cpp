@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        htmlcell.cpp
-// Purpose:     CHtmlCell - basic element of HTML output
+// Purpose:     CHtmlCell - basic element of HTML outputl
 // Author:      Vaclav Slavik
 // RCS-ID:      $Id: htmlcell.cpp,v 1.102 2005/09/11 12:09:35 VZ Exp $
 // Copyright:   (c) 1999 Vaclav Slavik
