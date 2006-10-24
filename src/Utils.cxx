@@ -445,7 +445,7 @@ wxString SPACE::BuildHtmlFromText(const wxString& Source, bool ParseEmoticons, b
 		Result.Replace(wxT("·0"), wxEmptyString);
 	}
 	
-	return wxT("<a href='pipo'>Je teste un truc</a>");//Result;
+	return Result;
 }
 
 //Url Encoding (code from uri.cpp)

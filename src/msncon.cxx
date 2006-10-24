@@ -143,9 +143,10 @@ void CLASS::InputEvent(wxSocketEvent & Event)
     //cout << "Entering Loop for " << m_parse.Lines() << " lines" << endl;
     for(size_t i = 0 ; i < m_parse.Lines() ; ++i)
     {
-        wxString   First = m_parse.GetString(i, 0),
-                           P1 = m_parse.GetString(i, 1),
-                                P2 = m_parse.GetString(i, 2);
+        wxArrayString vecp = m_parse.GetWords(i);
+        wxString   First = vecp[0];//m_parse.GetString(i, 0),
+        //                   P1 = m_parse.GetString(i, 1),
+        //                        P2 = m_parse.GetString(i, 2);
 
         //cout << m_parse[i].mb_str(wxConvUTF8)  << endl;
         wxLogMessage(_("%s"), m_parse[i].c_str());
@@ -159,7 +160,7 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         if(First.StartsWith(wxT("QNG")))
             SendEvent(wxMsnEvent());
         if(First.StartsWith(wxT("CHL")))
-            MsnChallenge(m_parse.GetString(i, 2));
+            MsnChallenge(vecp[2]);
         if(First.StartsWith(wxT("MSG")))
             SendEvent(wxMsnEvent(wxMsnEventConnectionP3));
         if(First.StartsWith(wxT("SYN")))
@@ -183,7 +184,7 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         if(First.StartsWith(wxT("NLN")))
             StatusChanged(m_parse[i]);
         if(First.StartsWith(wxT("FLN")))
-            BuddyDisconnected(m_parse.GetString(i, 1));
+            BuddyDisconnected(vecp[1]);
         if(First.StartsWith(wxT("PRP")))
             PersoInfo(m_parse[i]);
         if(First.StartsWith(wxT("RNG")))
@@ -197,9 +198,9 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         }
         if(First.StartsWith(wxT("USR")))
         {
-            if(m_parse.GetString(i, 2) == wxT("OK"))
+            if(vecp[2] == wxT("OK"))
                 SendEvent(wxMsnEvent(wxMsnEventConnectionP2));
-            else if(!PassportIdent(m_parse.GetString(i, 4)))
+            else if(!PassportIdent(vecp[4]))
                 return;
         }
 

@@ -109,6 +109,25 @@ wxString CLASS::GetString(size_t line, size_t word)
     return TokWord.GetNextToken();
 }
 
+wxArrayString CLASS::GetWords(size_t line)
+{
+    wxArrayString vec;
+
+    if(line > m_vec.GetCount())
+        return vec;
+
+    wxStringTokenizer TokWord(m_vec[line], wxT(" "));
+
+    while(TokWord.HasMoreTokens())
+        vec.Add(TokWord.GetNextToken());
+
+    if(vec.Count() < 3)
+        for(size_t i = 0 ; i < vec.Count()-3 ; ++i)
+            vec.Add(wxString());
+    
+    return vec;
+}
+
 wxString & CLASS::operator [] (size_t line)
 {
     if(line > m_vec.GetCount())

@@ -45,6 +45,7 @@ namespace nsNetwork
             size_t LineSize(size_t line);
         
             wxString GetString(size_t line, size_t word);
+            wxArrayString GetWords(size_t line);
         
             wxString & operator [] (size_t line);
             
