@@ -33,7 +33,7 @@
 #include "defines.h"
 #include "Events.h"
 #include "CListEvent.h"
-#include "msncon.h"
+#include "CConnec.h"
 #include "CContactList.h"
 #include "CData.h"
 

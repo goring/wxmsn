@@ -16,7 +16,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/** 	\file 	msncon.h
+/** 	\file 	CConnec.h
 	\author 	Neil "Superna" ARMSTRONG
 	\date 	24/11/2005
     $Id$
@@ -24,8 +24,8 @@
 
 // Include Protection
 
-#ifndef _MSNCON_H_
-#define _MSNCON_H_
+#ifndef _CCONNEC_H_
+#define _CCONNEC_H_
 
 // Includes
 

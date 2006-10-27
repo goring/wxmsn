@@ -34,7 +34,7 @@
 #include "CContactFrame.h"
 #include "CChatHandler.h"
 #include "CData.h"
-#include "msncon.h"
+#include "CConnec.h"
 #include "Events.h"
 #include "CListEvent.h"
 

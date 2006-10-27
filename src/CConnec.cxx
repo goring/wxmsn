@@ -16,7 +16,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/** 	\file 	msncon.cxx
+/** 	\file 	CConnec.cxx
 	\author 	Neil "Superna" ARMSTRONG
 	\date 	09/10/2005
     $Id$
@@ -27,7 +27,7 @@
 #include <iostream>
 #include <wx/tokenzr.h>
 
-#include "msncon.h"
+#include "CConnec.h"
 #include "wxmsn.h"
 #include "CSsl.h"
 #include "Utils.h"

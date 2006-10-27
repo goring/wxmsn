@@ -31,7 +31,7 @@
 #include <wx/wx.h>
 #include "CChatFrame.h"
 #include "CChatTab.h"
-#include "msncon.h"
+#include "CConnec.h"
 #include "arraydeclaration.h"
 #include "Events.h"
 

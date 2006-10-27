@@ -76,7 +76,7 @@ module.include.files=\
 	CContactList.h\
 	CGroup.h\
 	CPopup.h\
-	msncon.h\
+	CConnec.h\
 	wxmsn.h\
 	arraydeclaration.h\
 	CData.h\
@@ -107,7 +107,7 @@ module.source.files=\
 	CGroup.cc\
 	CPopup.cc\
 	chl.c\
-	msncon.cxx\
+	CConnec.cxx\
 	CData.cc\
 	CConsole.cxx\
 	CSsl.cxx\
