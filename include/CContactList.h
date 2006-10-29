@@ -27,7 +27,8 @@
 // Includes
 
 #include "wx/wx.h"
-#include "CHtmlWin.h"
+//#include "CHtmlWin.h"
+#include "wx/htmllbox.h"
 #include "defines.h"
 #include "CData.h"
 #include "CGroup.h"
@@ -44,7 +45,7 @@ class CData;
 
 //namespace nsContact
 //{
-	class CContactList : public CHtmlWindow
+	class CContactList : public wxHtmlListBox
 	{
 		friend class CData;
 			
@@ -66,43 +67,35 @@ class CData;
 			void SetParseURLs(bool Parse);
 			void SetDisplayEmptyGroups(bool Display);
 			void Redraw();
-			void Clear();
 					
 		protected:
-			void OnLeftClick(wxMouseEvent& MouseEvent);
-			void OnRightClick(wxMouseEvent& MouseEvent);
-            void OnDoubleClick(wxMouseEvent& MouseEvent);
-			void OnMouseMove(wxMouseEvent& MouseEvent);
-			void OnContactHover(wxTimerEvent& TimerEvent);
-			void OnFocusChange(wxFocusEvent& FocusEvent);
-			void OnSize(wxSizeEvent& SizeEvent);
-			void OnLinkClicked(const CHtmlLinkInfo& ClickedLink);
-			void OnMenu(wxCommandEvent& MenuEvent);
+			virtual wxString OnGetItem(size_t n) const;
 		
 		private:
-			CData*			LinkedData;
+			
+		
+			CData*		LinkedData;
 
-			wxString		SelfHtmlPattern;
-			wxString		ContactHtmlPattern;
-			wxString		GroupHtmlPattern;
-			wxString		Background;
-			wxString		NormalContactColor;
-			wxString		SelectedContactColor;
-			wxString		OfflineContactColor;
-			CContact*		SelectedContact;
-			CContact*		HoveredContact;
-			wxTimer			HoverTimer;
-			CPopup*			ContactInfoPopup;
-			bool			ParseMSNPlusCodes;
-			bool			ParseEmoticons;
-			bool			ParseURLs;
-			bool 			MustReparse;
-			bool			DisplayEmptyGroups;
-			wxString		BrowserCommand;
-			GroupArray		DisplayedGroups;
+			wxString	SelfHtmlPattern;
+			wxString	ContactHtmlPattern;
+			wxString	GroupHtmlPattern;
+			wxString	Background;
+			wxString	NormalContactColor;
+			wxString	SelectedContactColor;
+			wxString	OfflineContactColor;
+			CContact*	SelectedContact;
+			CContact*	HoveredContact;
+			wxTimer		HoverTimer;
+			CPopup*		ContactInfoPopup;
+			bool		ParseMSNPlusCodes;
+			bool		ParseEmoticons;
+			bool		ParseURLs;
+			bool 		MustReparse;
+			bool		DisplayEmptyGroups;
+			wxString	BrowserCommand;
+			GroupArray	DisplayedGroups;
 			ContactArray	DisplayedContacts;
-			CContact*		DisplayedSelf;
-			wxString		DrawContact(CContact* DrawedContact);
+			CContact*	DisplayedSelf;
 			
 			CONTACT_SORTING_STYLE SortingStyle;
 		
@@ -126,7 +119,8 @@ class CData;
 			}
 			
 			void CreateLayout();
-			DECLARE_EVENT_TABLE()
+//			DECLARE_EVENT_TABLE()
+			DECLARE_NO_COPY_CLASS(CContactList)
 	};
 //}
 
