@@ -37,7 +37,7 @@
 #include "CParseSocket.h"
 #include "CData.h"
 
-namespace nsConsole
+namespace nsCore
 {
     /*class MsnData
     {
@@ -60,10 +60,10 @@ namespace nsConsole
             bool m_con;
     };*/
     
-    class wxMsnCon : public wxEvtHandler
+    class CConnec : public wxEvtHandler
     {
         public:
-            wxMsnCon(wxEvtHandler * parent, CData * Data);
+            CConnec(wxEvtHandler * parent, CData * Data);
         
             void SetMail(const wxString & mail);
             void SetPass(const wxString & pass);
@@ -129,6 +129,6 @@ namespace nsConsole
         DECLARE_EVENT_TABLE()
     };
 	
-} // nsMsn
+} // nsCore
 		
 #endif

@@ -53,7 +53,7 @@ BEGIN_EVENT_TABLE(CLASS, wxFrame)
 //    EVT_TIMER(wxTimerID, CLASS::OnTimer)
 END_EVENT_TABLE()
 
-CLASS::CLASS(wxEvtHandler * parent, wxMsnCon * msncon, CContactList * clist, CData * data/*, MsnData * msndata*/)
+CLASS::CLASS(wxEvtHandler * parent, nsCore::CConnec * msncon, CContactList * clist, CData * data/*, MsnData * msndata*/)
     : wxFrame(NULL, -1, _("Console"), wxPoint(50, 50), wxSize(800, 600), wxDEFAULT_FRAME_STYLE& ~(wxCLOSE_BOX | wxMAXIMIZE_BOX) ), m_MSNCon(msncon),
     m_clist(clist), m_contactdata(data)/*, m_data(msndata)*/, m_pl(parent), m_timer(this, wxTimerID)
 {

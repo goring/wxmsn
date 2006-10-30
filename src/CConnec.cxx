@@ -35,17 +35,17 @@
 // Namespaces
 
 using namespace std;
-using namespace nsConsole;
+using namespace nsCore;
 using namespace nsNetwork;
 using namespace nsEvents;
 using namespace nsUtils;
 
 // Class
-#define CLASS wxMsnCon
+#define CLASS CConnec
 
 /*
         public:
-            wxMsnCon(wxWindow * parent = NULL);
+            CConnec(wxWindow * parent = NULL);
         
             void SetMail(wxString & mail);
             void SetPass(wxString & pass);

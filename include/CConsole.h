@@ -43,7 +43,7 @@ namespace nsConsole
     class CConsole : public wxFrame
     {
         public:
-            CConsole(wxEvtHandler * parent, wxMsnCon * msncon, CContactList * clist, CData * data/*, MsnData * msndata*/);
+            CConsole(wxEvtHandler * parent, nsCore::CConnec * msncon, CContactList * clist, CData * data/*, MsnData * msndata*/);
             wxTextCtrl * getConsole() { return m_console; }
             void setFName(const wxString & Str) { m_fname->SetValue(Str); }
             void setPStatus(const wxString & Str) { m_pstatus->SetValue(Str); }
@@ -62,7 +62,7 @@ namespace nsConsole
                         *   m_fname,
                         *   m_pstatus;
         
-            wxMsnCon    *   m_MSNCon;
+            nsCore::CConnec     *   m_MSNCon;
             CContactList* m_clist;
             CData		* m_contactdata;
             //MsnData     * m_data;

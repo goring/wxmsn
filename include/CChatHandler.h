@@ -43,7 +43,7 @@ namespace nsChat
     class CChatHandler : public wxEvtHandler
     {
         public:
-            CChatHandler(wxWindow * parent, nsConsole::wxMsnCon * con);
+            CChatHandler(wxWindow * parent, nsCore::CConnec * con);
             // All is contained in the events, RNG infos
             void NewIncomingChat(nsEvents::wxMsnEvent & event);
             // Add a chat, will ask for a SB session
@@ -60,7 +60,7 @@ namespace nsChat
         
             void SocketEvent(wxSocketEvent & evt);
             
-            nsConsole::wxMsnCon * m_con;
+            nsCore::CConnec * m_con;
             wxWindow    * m_parent;
             CChatFrame * m_chatframe;
             //array de connections
