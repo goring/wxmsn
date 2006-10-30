@@ -37,6 +37,15 @@
 #include "CParseSocket.h"
 #include "CData.h"
 
+// Defines
+#define _MCLASS_START_ \
+    public:\
+    CVER(CConnec * c) : m_c(c) {} \
+    virtual void operator () (int i)
+#define _MCLASS_END_ \
+    protected:\
+    CConnec * m_c;
+
 namespace nsCore
 {
     /*class MsnData
@@ -81,6 +90,23 @@ namespace nsCore
             void Refresh();
         
         protected:
+            
+            class CMethodClass
+            {
+                public:
+                    virtual void operator () (int i) = 0;
+                protected:
+                    virtual ~CMethodClass() {}
+            };
+
+            class CVER : public CMethodClass
+            {
+                    _MCLASS_START_
+                    {
+                        m_c->MsnVER();
+                    }
+                    _MCLASS_END_
+            };
             
             void InputEvent(wxSocketEvent & Event);
             void SendEvent(nsEvents::wxMsnEvent Event);

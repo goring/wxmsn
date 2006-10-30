@@ -112,7 +112,8 @@ void CLASS::Connect()
     SendLog(_("Connection Ok"));
 
     //Sending First Command
-    MsnVER();
+    //MsnVER();
+    CVER(this)(0);
 }
 
 void CLASS::InputEvent(wxSocketEvent & Event)
