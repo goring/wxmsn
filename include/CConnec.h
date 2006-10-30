@@ -16,7 +16,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/** 	\file 	msncon.h
+/** 	\file 	CConnec.h
 	\author 	Neil "Superna" ARMSTRONG
 	\date 	24/11/2005
     $Id$
@@ -24,8 +24,8 @@
 
 // Include Protection
 
-#ifndef _MSNCON_H_
-#define _MSNCON_H_
+#ifndef _CCONNEC_H_
+#define _CCONNEC_H_
 
 // Includes
 
@@ -37,7 +37,7 @@
 #include "CParseSocket.h"
 #include "CData.h"
 
-namespace nsConsole
+namespace nsCore
 {
     /*class MsnData
     {
@@ -60,10 +60,10 @@ namespace nsConsole
             bool m_con;
     };*/
     
-    class wxMsnCon : public wxEvtHandler
+    class CConnec : public wxEvtHandler
     {
         public:
-            wxMsnCon(wxEvtHandler * parent, CData * Data);
+            CConnec(wxEvtHandler * parent, CData * Data);
         
             void SetMail(const wxString & mail);
             void SetPass(const wxString & pass);
@@ -129,6 +129,6 @@ namespace nsConsole
         DECLARE_EVENT_TABLE()
     };
 	
-} // nsMsn
+} // nsCore
 		
 #endif

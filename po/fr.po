@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wxmsn 0.01\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-17 20:58+0100\n"
+"POT-Creation-Date: 2006-10-27 15:47+0200\n"
 "PO-Revision-Date: 2006-03-17 21:03+0100\n"
 "Last-Translator: Neil 'Superna' Armstrong <superna@na-prod.com>\n"
 "Language-Team: French\n"
@@ -16,251 +16,107 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/CChatFrame.cxx:45
-msgid "Chat"
-msgstr "Chat"
-
-#: src/CChatFrame.cxx:80 src/CContact.cc:253 src/CContactList.cc:477
-msgid "Idle"
-msgstr "Inactif"
-
-#: src/CChatFrame.cxx:81
-msgid "Error"
-msgstr "Erreur"
-
-#: src/CChatFrame.cxx:82 src/CMsnAuth.cxx:171
-msgid "Connected"
-msgstr "Connecté"
-
-#: src/CChatFrame.cxx:83
-msgid "New Message"
-msgstr "Nouveau Message"
-
-#: src/CChatFrame.cxx:84
-msgid "Writing"
-msgstr "Ecrivant"
-
-#: src/CChatFrame.cxx:115
-msgid "No Tab Selected !"
-msgstr "Pas d'Onglet Sélectionnés !"
-
-#: src/CChatTab.cxx:65
-msgid "Send"
-msgstr "Envoyer"
-
-#: src/CChatTab.cxx:81
-msgid "Put status here"
-msgstr "Ajouter le statut ici"
-
-#: src/CConnectPanel.cxx:56
-msgid "Keep my password"
-msgstr "Garder mon mot de passe"
-
-#: src/CConnectPanel.cxx:57
-msgid "New"
-msgstr "Nouveau"
-
-#: src/CConnectPanel.cxx:58
-msgid "Modify"
-msgstr "Modifier"
-
-#: src/CConnectPanel.cxx:59
-msgid "Delete"
-msgstr "Supprimer"
-
-#: src/CConnectPanel.cxx:66
-msgid "Click here to get connected"
-msgstr "Cliquer ici pour vous connecter"
-
-#: src/CConnectPanel.cxx:77
-msgid "Password :"
-msgstr "Mot de Passe :"
-
-#: src/CConnectPanel.cxx:83
-msgid "Profile selection"
-msgstr "Sélection de Profil"
-
-#: src/CContact.cc:251 src/CData.cc:38
+#: src/CContact.cc:285 src/CData.cc:38
 msgid "Online"
 msgstr "En Ligne"
 
-#: src/CContact.cc:252 src/CContactList.cc:476
+#: src/CContact.cc:286 src/CContactList.cc:539
 msgid "Busy"
 msgstr "Occupé"
 
-#: src/CContact.cc:254 src/CContactList.cc:478
+#: src/CContact.cc:287 src/CContactList.cc:540 src/CChatFrame.cxx:80
+msgid "Idle"
+msgstr "Inactif"
+
+#: src/CContact.cc:288 src/CContactList.cc:541
 msgid "Be right back"
 msgstr "Bientôt de retour"
 
-#: src/CContact.cc:255 src/CContactList.cc:479
+#: src/CContact.cc:289 src/CContactList.cc:542
 msgid "Away"
 msgstr "Absent"
 
-#: src/CContact.cc:256 src/CContactList.cc:480
+#: src/CContact.cc:290 src/CContactList.cc:543
 msgid "On phone"
 msgstr "Au téléphone"
 
-#: src/CContact.cc:257 src/CContactList.cc:481
+#: src/CContact.cc:291 src/CContactList.cc:544
 msgid "Out to lunch"
 msgstr "Parti manger"
 
-#: src/CContact.cc:258 src/CContactList.cc:482
+#: src/CContact.cc:292 src/CContactList.cc:545
 msgid "Appear offline"
 msgstr "Hors Ligne"
 
-#: src/CContact.cc:259 src/CData.cc:39
+#: src/CContact.cc:293 src/CData.cc:39
 msgid "Offline"
 msgstr "Hors Ligne"
 
-#: src/CContactFrame.cxx:41 src/CContactFrame.cxx:212
-msgid "Connection"
-msgstr "Connection"
-
-#: src/CContactFrame.cxx:82
-msgid "E&xit"
-msgstr "&Quitter"
-
-#: src/CContactFrame.cxx:86 src/CContactFrame.cxx:113
-msgid "Prefere&nces"
-msgstr "Préfére&nces"
-
-#: src/CContactFrame.cxx:88 src/CContactFrame.cxx:121
-msgid "&About"
-msgstr "&A Propos"
-
-#: src/CContactFrame.cxx:94
-msgid "Change Image"
-msgstr "Changer d'image"
-
-#: src/CContactFrame.cxx:96
-msgid "Change Friendly Name"
-msgstr "Changer le pseudonyme"
-
-#: src/CContactFrame.cxx:98
-msgid "Change Personnal Status"
-msgstr "Changer le message personnel"
-
-#: src/CContactFrame.cxx:101
-msgid "Log &Off"
-msgstr "&Déconnecter"
-
-#: src/CContactFrame.cxx:104
-msgid "Set Busy"
-msgstr "Mettre Absent"
-
-#: src/CContactFrame.cxx:106
-msgid "Set Available"
-msgstr "Mettre Connecté"
-
-#: src/CContactFrame.cxx:165
-msgid ""
-"wxMsn\n"
-"Authors :\n"
-"\tNeil 'Superna' Armstrong\n"
-"\tJulien 'Trapamoosch' Enche\n"
-"\n"
-"wxMsn is a MSN Messenger 'libre' clone for wxWidgets supported platforms.\n"
-"Source code is licensed the GPL2+ and can be built under Linux or Mac Os X.\n"
-"\n"
-"Please see : http://wxmsn.starnux.net for more informations."
-msgstr ""
-"wxMsn\n"
-"Auteurs :\n"
-"\tNeil 'Superna' Armstrong\n"
-"\tJulien 'Trapamoosch' Enche\n"
-"\n"
-"wxMsn est un clone libre du client MSN Messenger pour les plateformes "
-"supportant wxWidgets.\n"
-"Le code source est sous licence GPL2+ et peut être compilé sous Linux ou Mac "
-"Os X.\n"
-"\n"
-"Visiter : http://wxmsn.starnux.net pour plus d'informations."
-
-#: src/CContactFrame.cxx:165
-msgid "About wxMsn"
-msgstr "A Propos de wxMsn"
-
-#: src/CContactFrame.cxx:200
-msgid "Contact list"
-msgstr "Liste de Contacts"
-
-#: src/CContactFrame.cxx:202
-msgid "Connected !"
-msgstr "Connecté !"
-
-#: src/CContactFrame.cxx:221
-msgid "Connecting"
-msgstr "En cours de connection"
-
-#: src/CContactFrame.cxx:228
-msgid "Disconnected"
-msgstr "Déconnecté"
-
-#: src/CContactList.cc:245
-msgid "'>This group is empty.</font></table>"
-msgstr "'>Ce groupe est vide.</font></table>"
-
-#: src/CContactList.cc:444
-msgid "Block All Group"
-msgstr "Bloquer tout le groupe"
-
-#: src/CContactList.cc:445
-msgid "Chat with all Group"
-msgstr "Discutter avec tout le groupe"
-
-#: src/CContactList.cc:446
-msgid "Remove Group"
-msgstr "Supprimer le Groupe"
-
-#: src/CContactList.cc:447
-msgid "Rename Group"
-msgstr "Renommer le groupe"
-
-#: src/CContactList.cc:460
-msgid "Open Chat Window"
-msgstr "Ouvrir une fenêtre de Chat"
-
-#: src/CContactList.cc:461
-msgid "View Contact Infos"
-msgstr "Voir les informations du contact"
-
-#: src/CContactList.cc:462
-msgid "Remove from Group"
-msgstr "Supprimer du Groupe"
-
-#: src/CContactList.cc:463
-msgid "Copy to another Group"
-msgstr "Copier vers un autre groupe"
-
-#: src/CContactList.cc:464
-msgid "Move to another Group"
-msgstr "Déplacer vers un autre groupe"
-
-#: src/CContactList.cc:465
-msgid "Remove Contact"
-msgstr "Enlever le Contact"
-
-#: src/CContactList.cc:475
+#: src/CContactList.cc:538
 msgid "On line"
 msgstr "En Ligne"
 
-#: src/CContactList.cc:483 src/CContactList.cc:761
+#: src/CContactList.cc:546 src/CContactList.cc:846
 msgid "Personal away message"
 msgstr "Message d'absence personnel"
 
-#: src/CContactList.cc:485 src/CContactList.cc:639
+#: src/CContactList.cc:548 src/CContactList.cc:724
 msgid "Change friendly name"
 msgstr "Changer le pseudonyme"
 
-#: src/CContactList.cc:486 src/CContactList.cc:652
+#: src/CContactList.cc:549 src/CContactList.cc:737
 msgid "Change personal message"
 msgstr "Changer le message personnel"
 
-#: src/CContactList.cc:594
+#: src/CContactList.cc:561
+msgid "Block All Group"
+msgstr "Bloquer tout le groupe"
+
+#: src/CContactList.cc:562
+msgid "Chat with all Group"
+msgstr "Discutter avec tout le groupe"
+
+#: src/CContactList.cc:563
+msgid "Remove Group"
+msgstr "Supprimer le Groupe"
+
+#: src/CContactList.cc:564
+msgid "Rename Group"
+msgstr "Renommer le groupe"
+
+#: src/CContactList.cc:578
+msgid "Open Chat Window"
+msgstr "Ouvrir une fenêtre de Chat"
+
+#: src/CContactList.cc:579
+msgid "View Contact Infos"
+msgstr "Voir les informations du contact"
+
+#: src/CContactList.cc:580
+msgid "Remove from Group"
+msgstr "Supprimer du Groupe"
+
+#: src/CContactList.cc:581
+msgid "Copy to another Group"
+msgstr "Copier vers un autre groupe"
+
+#: src/CContactList.cc:582
+msgid "Move to another Group"
+msgstr "Déplacer vers un autre groupe"
+
+#: src/CContactList.cc:583
+msgid "Remove Contact"
+msgstr "Enlever le Contact"
+
+#: src/CContactList.cc:676
+msgid "Informations"
+msgstr ""
+
+#: src/CContactList.cc:677
 msgid "Name : "
 msgstr "Nom : "
 
-#: src/CContactList.cc:595
+#: src/CContactList.cc:678
 msgid ""
 "\n"
 "Message : "
@@ -268,7 +124,7 @@ msgstr ""
 "\n"
 "Message : "
 
-#: src/CContactList.cc:596
+#: src/CContactList.cc:679
 msgid ""
 "\n"
 "Address : "
@@ -276,113 +132,159 @@ msgstr ""
 "\n"
 "Addresse : "
 
-#: src/CContactList.cc:639
+#: src/CContactList.cc:680
+msgid ""
+"\n"
+"You're not in this contact's list"
+msgstr ""
+
+#: src/CContactList.cc:680
+msgid ""
+"\n"
+"You're in this contact's list"
+msgstr ""
+
+#: src/CContactList.cc:724
 msgid "New friendly name : "
 msgstr "Nouveau pseudonyme : "
 
-#: src/CContactList.cc:652
+#: src/CContactList.cc:737
 msgid "New personal message : "
 msgstr "Nouveau message personnel : "
 
-#: src/CContactList.cc:761
+#: src/CContactList.cc:846
 msgid "Change personal away message"
 msgstr "Changer le message d'absence personnalisé"
 
-#: src/CCoreHandler.cxx:66 src/CCoreHandler.cxx:206
-#, fuzzy
-msgid "wxMSN Disconnected"
-msgstr "Déconnecté"
-
-#: src/CCoreHandler.cxx:91
+#: src/CPopup.cc:83 src/CPopup.cc:89
 #, c-format
-msgid "Received ListEven ID:%i"
-msgstr "ListEven Reçu:%i"
+msgid "Popup filename : %s"
+msgstr "Ficher de Popup : %s"
 
-#: src/CCoreHandler.cxx:109
-#, c-format
-msgid "LIST : Double Click for %s"
-msgstr ""
+#: src/CConnec.cxx:91
+msgid "Already Connected !"
+msgstr "Déja connecté :"
 
-#: src/CCoreHandler.cxx:114
-#, c-format
-msgid "LIST : Blocking asked for %s"
-msgstr ""
+#: src/CConnec.cxx:95
+msgid "Connect Asked"
+msgstr "Connection demandée"
 
-#: src/CCoreHandler.cxx:143
-msgid "Refreshing...\n"
-msgstr "Rafraichissement...\n"
+#: src/CConnec.cxx:98
+msgid "Initializing Address"
+msgstr "Initialisation de l'Adresse"
 
-#: src/CCoreHandler.cxx:149
-msgid "\n"
-msgstr "\n"
+#: src/CConnec.cxx:103 src/CConnec.cxx:285
+msgid "Sending Connection"
+msgstr "Envoi de la connection"
 
-#: src/CCoreHandler.cxx:154
-msgid "Connection Failed\n"
-msgstr "La connection é échouée\n"
-
-#: src/CCoreHandler.cxx:156
-#, fuzzy
-msgid "wxMSN Connection Failes"
+#: src/CConnec.cxx:107 src/CConnec.cxx:289
+msgid "Connection Failed"
 msgstr "La connexion a échouée"
 
-#: src/CCoreHandler.cxx:162
-#, fuzzy
-msgid "wxMSN Connecting"
-msgstr "En cours de connection"
+#: src/CConnec.cxx:112 src/CConnec.cxx:294
+msgid "Connection Ok"
+msgstr "Connection OK"
 
-#: src/CCoreHandler.cxx:189
-msgid "Connected\n"
-msgstr "Connecté\n"
+#: src/CConnec.cxx:125
+msgid "Lost Connection"
+msgstr "Connection Perdue"
 
-#: src/CCoreHandler.cxx:190
+#: src/CConnec.cxx:135
+msgid "Other Socket Event"
+msgstr "Autre Event Socket"
+
+#: src/CConnec.cxx:137
 #, c-format
-msgid "New self status %i"
-msgstr "Nouveau statut perso %i"
+msgid "SockEvent ID : %i"
+msgstr "ID SockEvent : %i"
 
-#: src/CCoreHandler.cxx:193
-#, fuzzy
-msgid "wxMSN Connected"
+#: src/CConnec.cxx:152
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: src/CConnec.cxx:209
+msgid "A Socket Error Occured, aborting"
+msgstr "Une erreur de socket est apparue, abandon"
+
+#: src/CConnec.cxx:211
+#, c-format
+msgid "Socket Error : %i"
+msgstr "Erreur de Socket : %i"
+
+#: src/CConnec.cxx:220
+msgid "Sending VER"
+msgstr "Envoi de VER"
+
+#: src/CConnec.cxx:224 src/CConnec.cxx:234 src/CConnec.cxx:244
+#: src/CConnec.cxx:366 src/CConnec.cxx:376 src/CConnec.cxx:385
+#: src/CConnec.cxx:407 src/CConnec.cxx:447 src/CConnec.cxx:515
+#: src/CConnec.cxx:531 src/CConnec.cxx:554
+#, c-format
+msgid "Sending : %s"
+msgstr "Envoi : %s"
+
+#: src/CConnec.cxx:230
+msgid "Sending CVR"
+msgstr "Envoi de CVR"
+
+#: src/CConnec.cxx:240
+msgid "Sending USR"
+msgstr "Envoi de USR"
+
+#: src/CConnec.cxx:273
+msgid "Switching to Server : "
+msgstr "Changement de Serveur : "
+
+#: src/CConnec.cxx:277
+msgid "ServerString is Incorrect, Aborting"
+msgstr "ServerString est incorrect, Abandon"
+
+#: src/CConnec.cxx:283
+msgid "Server : "
+msgstr "Serveur : "
+
+#: src/CConnec.cxx:345
+msgid "Successful Passport Authentification"
+msgstr "Authentification Passport avec Succés"
+
+#: src/CConnec.cxx:363
+msgid "Requesting new Switchboard Session"
+msgstr ""
+
+#: src/CConnec.cxx:372
+msgid "Sending Final USR Auth"
+msgstr "Envoi de USR Final pour Authentification"
+
+#: src/CConnec.cxx:403
+msgid "Sync"
+msgstr "Synchro"
+
+#: src/CConnec.cxx:427
+msgid "Not Connected"
 msgstr "Pas connecté"
 
-#: src/CCoreHandler.cxx:200
-msgid "Disconnected\n"
-msgstr "Déconnecté\n"
+#: src/CConnec.cxx:444
+msgid "Changing Friendly Name"
+msgstr "Changement du Pseudonyme"
 
-#: src/CCoreHandler.cxx:229
-#, c-format
-msgid "Personnal Status Message: %s\n"
-msgstr "Message personnel: %s\n"
+#: src/CConnec.cxx:512
+msgid "Set Status "
+msgstr "Statut mis : "
 
-#: src/CCoreHandler.cxx:256
-#, c-format
-msgid "New Contact : %s %i %s"
-msgstr "Nouveau Contact : %s %i %s"
-
-#: src/CCoreHandler.cxx:271
-#, c-format
-msgid "Adding to GID: %s %s\n"
-msgstr "Ajout au groupe: %s %s\n"
-
-#: src/CCoreHandler.cxx:281
-#, c-format
-msgid "Status Changed : %s %s %s"
-msgstr "Statut changé : %s %s %s"
-
-#: src/CCoreHandler.cxx:297
-#, c-format
-msgid "Contact Disconnected : %s\n"
-msgstr "Contact déconnecté : %s\n"
-
-#: src/CCoreHandler.cxx:306
-#, c-format
-msgid "New Chat Invitation : [%s %s] to [%s,%s,%s]"
-msgstr ""
+#: src/CConnec.cxx:528 src/CConnec.cxx:551
+msgid "Changing Personnal Status"
+msgstr "Changement du Statut personnel"
 
 #: src/CData.cc:40
 msgid "No group"
 msgstr "Aucun groupe"
 
-#: src/CGui.cxx:45
+#: src/CConsole.cxx:57
+msgid "Console"
+msgstr ""
+
+#: src/CGui.cxx:46
 msgid "Log Window"
 msgstr "Fenêtre de log"
 
@@ -421,6 +323,10 @@ msgstr "Requête : %s %s"
 msgid "To send : {%s}"
 msgstr "Envoi : {%s}"
 
+#: src/CMsnAuth.cxx:171 src/CChatFrame.cxx:82
+msgid "Connected"
+msgstr "Connecté"
+
 #: src/CMsnAuth.cxx:194
 msgid "Incorrect E-Mail or Password, try again"
 msgstr "Mot de passe ou E-Mail incorrect, rééssayer"
@@ -445,140 +351,270 @@ msgstr "Passport a échoué : "
 msgid "Unable to find AuthID"
 msgstr "Impossible de trouver AuthID"
 
-#: src/CPopup.cc:83 src/CPopup.cc:89
-#, c-format
-msgid "Popup filename : %s"
-msgstr "Ficher de Popup : %s"
+#: src/CChatFrame.cxx:45
+msgid "Chat"
+msgstr "Chat"
 
-#: src/msncon.cxx:91
-msgid "Already Connected !"
-msgstr "Déja connecté :"
+#: src/CChatFrame.cxx:81
+msgid "Error"
+msgstr "Erreur"
 
-#: src/msncon.cxx:95
-msgid "Connect Asked"
-msgstr "Connection demandée"
+#: src/CChatFrame.cxx:83
+msgid "New Message"
+msgstr "Nouveau Message"
 
-#: src/msncon.cxx:98
-msgid "Initializing Address"
-msgstr "Initialisation de l'Adresse"
+#: src/CChatFrame.cxx:84
+msgid "Writing"
+msgstr "Ecrivant"
 
-#: src/msncon.cxx:103 src/msncon.cxx:273
-msgid "Sending Connection"
-msgstr "Envoi de la connection"
+#: src/CChatFrame.cxx:115
+msgid "No Tab Selected !"
+msgstr "Pas d'Onglet Sélectionnés !"
 
-#: src/msncon.cxx:107 src/msncon.cxx:277
-msgid "Connection Failed"
-msgstr "La connexion a échouée"
+#: src/CChatTab.cxx:65
+msgid "Send"
+msgstr "Envoyer"
 
-#: src/msncon.cxx:112 src/msncon.cxx:282
-msgid "Connection Ok"
-msgstr "Connection OK"
+#: src/CChatTab.cxx:81
+msgid "Put status here"
+msgstr "Ajouter le statut ici"
 
-#: src/msncon.cxx:125
-msgid "Lost Connection"
-msgstr "Connection Perdue"
+#: src/CContactFrame.cxx:41 src/CContactFrame.cxx:243
+msgid "Connection"
+msgstr "Connection"
 
-#: src/msncon.cxx:135
-msgid "Other Socket Event"
-msgstr "Autre Event Socket"
+#: src/CContactFrame.cxx:83
+msgid "E&xit"
+msgstr "&Quitter"
 
-#: src/msncon.cxx:137
-#, c-format
-msgid "SockEvent ID : %i"
-msgstr "ID SockEvent : %i"
+#: src/CContactFrame.cxx:87 src/CContactFrame.cxx:114
+msgid "Prefere&nces"
+msgstr "Préfére&nces"
 
-#: src/msncon.cxx:151
-#, c-format
-msgid "%s"
-msgstr "%s"
+#: src/CContactFrame.cxx:89 src/CContactFrame.cxx:122
+msgid "&About"
+msgstr "&A Propos"
 
-#: src/msncon.cxx:208
-msgid "A Socket Error Occured, aborting"
-msgstr "Une erreur de socket est apparue, abandon"
+#: src/CContactFrame.cxx:95
+msgid "Change Image"
+msgstr "Changer d'image"
 
-#: src/msncon.cxx:210
-#, c-format
-msgid "Socket Error : %i"
-msgstr "Erreur de Socket : %i"
+#: src/CContactFrame.cxx:97
+msgid "Change Friendly Name"
+msgstr "Changer le pseudonyme"
 
-#: src/msncon.cxx:219
-msgid "Sending VER"
-msgstr "Envoi de VER"
+#: src/CContactFrame.cxx:99
+msgid "Change Personnal Status"
+msgstr "Changer le message personnel"
 
-#: src/msncon.cxx:223 src/msncon.cxx:233 src/msncon.cxx:243 src/msncon.cxx:354
-#: src/msncon.cxx:364 src/msncon.cxx:373 src/msncon.cxx:395 src/msncon.cxx:435
-#: src/msncon.cxx:503 src/msncon.cxx:519
-#, c-format
-msgid "Sending : %s"
-msgstr "Envoi : %s"
+#: src/CContactFrame.cxx:102
+msgid "Log &Off"
+msgstr "&Déconnecter"
 
-#: src/msncon.cxx:229
-msgid "Sending CVR"
-msgstr "Envoi de CVR"
+#: src/CContactFrame.cxx:105
+msgid "Set Busy"
+msgstr "Mettre Absent"
 
-#: src/msncon.cxx:239
-msgid "Sending USR"
-msgstr "Envoi de USR"
+#: src/CContactFrame.cxx:107
+msgid "Set Available"
+msgstr "Mettre Connecté"
 
-#: src/msncon.cxx:261
-msgid "Switching to Server : "
-msgstr "Changement de Serveur : "
+#: src/CContactFrame.cxx:130
+#, fuzzy
+msgid "By group"
+msgstr "Aucun groupe"
 
-#: src/msncon.cxx:265
-msgid "ServerString is Incorrect, Aborting"
-msgstr "ServerString est incorrect, Abandon"
-
-#: src/msncon.cxx:271
-msgid "Server : "
-msgstr "Serveur : "
-
-#: src/msncon.cxx:333
-msgid "Successful Passport Authentification"
-msgstr "Authentification Passport avec Succés"
-
-#: src/msncon.cxx:351
-msgid "Requesting new Switchboard Session"
-msgstr ""
-
-#: src/msncon.cxx:360
-msgid "Sending Final USR Auth"
-msgstr "Envoi de USR Final pour Authentification"
-
-#: src/msncon.cxx:391
-msgid "Sync"
-msgstr "Synchro"
-
-#: src/msncon.cxx:415
-msgid "Not Connected"
-msgstr "Pas connecté"
-
-#: src/msncon.cxx:432
-msgid "Changing Friendly Name"
-msgstr "Changement du Pseudonyme"
-
-#: src/msncon.cxx:500
-msgid "Set Status "
+#: src/CContactFrame.cxx:132
+#, fuzzy
+msgid "By status"
 msgstr "Statut mis : "
 
-#: src/msncon.cxx:516
-msgid "Changing Personnal Status"
-msgstr "Changement du Statut personnel"
+#: src/CContactFrame.cxx:134
+msgid "Mixed"
+msgstr ""
 
-#: include/defines.h:129
-msgid "&Help"
-msgstr "&Aide"
+#: src/CContactFrame.cxx:176
+msgid ""
+"wxMsn\n"
+"Authors :\n"
+"\tNeil 'Superna' Armstrong\n"
+"\tJulien 'Trapamoosch' Enche\n"
+"\n"
+"wxMsn is a MSN Messenger 'libre' clone for wxWidgets supported platforms.\n"
+"Source code is licensed the GPL2+ and can be built under Linux or Mac Os X.\n"
+"\n"
+"Please see : http://wxmsn.starnux.net for more informations."
+msgstr ""
+"wxMsn\n"
+"Auteurs :\n"
+"\tNeil 'Superna' Armstrong\n"
+"\tJulien 'Trapamoosch' Enche\n"
+"\n"
+"wxMsn est un clone libre du client MSN Messenger pour les plateformes "
+"supportant wxWidgets.\n"
+"Le code source est sous licence GPL2+ et peut être compilé sous Linux ou Mac "
+"Os X.\n"
+"\n"
+"Visiter : http://wxmsn.starnux.net pour plus d'informations."
 
-#: include/defines.h:130
-msgid "&File"
-msgstr "&Fichier"
+#: src/CContactFrame.cxx:176
+msgid "About wxMsn"
+msgstr "A Propos de wxMsn"
 
-#: include/defines.h:131
-msgid "&Tools"
-msgstr "&Outils"
+#: src/CContactFrame.cxx:231
+msgid "Contact list"
+msgstr "Liste de Contacts"
 
-#: include/defines.h:132
-msgid "&Account"
-msgstr "&Compte"
+#: src/CContactFrame.cxx:233
+msgid "Connected !"
+msgstr "Connecté !"
+
+#: src/CContactFrame.cxx:252
+msgid "Connecting"
+msgstr "En cours de connection"
+
+#: src/CContactFrame.cxx:259
+msgid "Disconnected"
+msgstr "Déconnecté"
+
+#: src/CCoreHandler.cxx:79 src/CCoreHandler.cxx:248
+#, fuzzy
+msgid "wxMSN Disconnected"
+msgstr "Déconnecté"
+
+#: src/CCoreHandler.cxx:104
+msgid "Idle Event"
+msgstr ""
+
+#: src/CCoreHandler.cxx:121
+#, c-format
+msgid "Received ListEven ID:%i"
+msgstr "ListEven Reçu:%i"
+
+#: src/CCoreHandler.cxx:139
+#, c-format
+msgid "LIST : Double Click for %s"
+msgstr ""
+
+#: src/CCoreHandler.cxx:144
+#, c-format
+msgid "LIST : Blocking asked for %s"
+msgstr ""
+
+#: src/CCoreHandler.cxx:181
+msgid "Refreshing...\n"
+msgstr "Rafraichissement...\n"
+
+#: src/CCoreHandler.cxx:188
+msgid "\n"
+msgstr "\n"
+
+#: src/CCoreHandler.cxx:193
+msgid "Connection Failed\n"
+msgstr "La connection é échouée\n"
+
+#: src/CCoreHandler.cxx:195
+#, fuzzy
+msgid "wxMSN Connection Failes"
+msgstr "La connexion a échouée"
+
+#: src/CCoreHandler.cxx:203
+#, fuzzy
+msgid "wxMSN Connecting"
+msgstr "En cours de connection"
+
+#: src/CCoreHandler.cxx:230
+msgid "Connected\n"
+msgstr "Connecté\n"
+
+#: src/CCoreHandler.cxx:231
+#, c-format
+msgid "New self status %i"
+msgstr "Nouveau statut perso %i"
+
+#: src/CCoreHandler.cxx:234
+#, fuzzy
+msgid "wxMSN Connected"
+msgstr "Pas connecté"
+
+#: src/CCoreHandler.cxx:242
+msgid "Disconnected\n"
+msgstr "Déconnecté\n"
+
+#: src/CCoreHandler.cxx:274
+#, c-format
+msgid "Personnal Status Message: %s\n"
+msgstr "Message personnel: %s\n"
+
+#: src/CCoreHandler.cxx:303
+#, c-format
+msgid "New Contact : %s %i %s"
+msgstr "Nouveau Contact : %s %i %s"
+
+#: src/CCoreHandler.cxx:319
+#, c-format
+msgid "Adding to GID: %s %s\n"
+msgstr "Ajout au groupe: %s %s\n"
+
+#: src/CCoreHandler.cxx:329
+#, c-format
+msgid "Status Changed : %s %s %s"
+msgstr "Statut changé : %s %s %s"
+
+#: src/CCoreHandler.cxx:347
+#, c-format
+msgid "Contact Disconnected : %s\n"
+msgstr "Contact déconnecté : %s\n"
+
+#: src/CCoreHandler.cxx:357
+#, c-format
+msgid "New Chat Invitation : [%s %s] to [%s,%s,%s]"
+msgstr ""
+
+#: src/CCoreHandler.cxx:389
+#, fuzzy, c-format
+msgid "New Song played : %s - %s"
+msgstr "Nouveau Contact : %s %i %s"
+
+#: src/CCoreHandler.cxx:398
+msgid "TaskBar Right Clicked"
+msgstr ""
+
+#~ msgid "Keep my password"
+#~ msgstr "Garder mon mot de passe"
+
+#~ msgid "New"
+#~ msgstr "Nouveau"
+
+#~ msgid "Modify"
+#~ msgstr "Modifier"
+
+#~ msgid "Delete"
+#~ msgstr "Supprimer"
+
+#~ msgid "Click here to get connected"
+#~ msgstr "Cliquer ici pour vous connecter"
+
+#~ msgid "Password :"
+#~ msgstr "Mot de Passe :"
+
+#~ msgid "Profile selection"
+#~ msgstr "Sélection de Profil"
+
+#~ msgid "'>This group is empty.</font></table>"
+#~ msgstr "'>Ce groupe est vide.</font></table>"
+
+#~ msgid "&Help"
+#~ msgstr "&Aide"
+
+#~ msgid "&File"
+#~ msgstr "&Fichier"
+
+#~ msgid "&Tools"
+#~ msgstr "&Outils"
+
+#~ msgid "&Account"
+#~ msgstr "&Compte"
 
 #~ msgid "TODO : menu"
 #~ msgstr "TODO : menu"

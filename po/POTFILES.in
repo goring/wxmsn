@@ -10,7 +10,7 @@ src/CContactList.cc
 src/CGroup.cc
 src/CPopup.cc
 src/chl.c
-src/msncon.cxx
+src/CConnec.cxx
 src/CData.cc
 src/CConsole.cxx
 src/CSsl.cxx

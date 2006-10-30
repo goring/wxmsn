@@ -34,7 +34,7 @@
 #include "CContactFrame.h"
 #include "CChatHandler.h"
 #include "CData.h"
-#include "msncon.h"
+#include "CConnec.h"
 #include "Events.h"
 #include "CListEvent.h"
 
@@ -66,7 +66,7 @@ namespace nsCore
             void TBLeft(wxTaskBarIconEvent & event);
         
             CData		m_contactdata;
-            nsConsole::wxMsnCon    m_msncon;
+            CConnec    m_msncon;
         
             wxTextCtrl * m_console;
             wxTaskBarIcon  * m_taskbar;
@@ -80,7 +80,7 @@ namespace nsCore
         DECLARE_EVENT_TABLE()
     };
 	
-} // ns
+} // nsCore
 		
 #endif
 	

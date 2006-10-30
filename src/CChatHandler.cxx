@@ -37,7 +37,7 @@ BEGIN_EVENT_TABLE(CLASS, wxEvtHandler)
     EVT_SOCKET(-1, CLASS::SocketEvent)
 END_EVENT_TABLE()
 
-CLASS::CLASS(wxWindow * parent, nsConsole::wxMsnCon * con)
+CLASS::CLASS(wxWindow * parent, nsCore::CConnec * con)
     : m_con(con), m_parent(parent)
 {
     //Creates the Chat Frame

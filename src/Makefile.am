@@ -28,7 +28,7 @@ wxmsn_SOURCES = \
 	sha1.c\
 	CConsole.cxx\
 	CGui.cxx\
-	msncon.cxx\
+	CConnec.cxx\
 	CSsl.cxx\
 	CParseSocket.cxx\
 	CMsnAuth.cxx\

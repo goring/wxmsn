@@ -11,7 +11,7 @@ wxmsn_include_DATA = \
 	CContactList.h\
 	CGroup.h\
 	CPopup.h\
-	msncon.h\
+	CConnec.h\
 	wxmsn.h\
 	arraydeclaration.h\
 	CData.h\
