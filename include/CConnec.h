@@ -93,24 +93,25 @@ namespace nsCore
             void MsnVER();
             void MsnCVR();
             void MsnUSR();
-            bool MsnXFR(const wxString & data);
+            //bool MsnXFR(const wxString & data);
+            bool MsnXFR(const wxArrayString & array);
             bool ChangeServer(const wxString & Server);
             bool PassportIdent(const wxString & lcString);
             void MsnFUSR();
             //void MsnConnected();
-            void MsnChallenge(const wxString & challenge);
+            void MsnChallenge(const wxArrayString & array);
             
-            void BuddyList(const wxString & Params);
-            void GroupList(const wxString & Params);
-            void BuddyOnline(const wxString & Params);
+            void BuddyList(const wxArrayString & array); //const wxString & Params);
+            void GroupList(const wxArrayString & array); //const wxString & Params);
+            void BuddyOnline(const wxArrayString & array); //const wxString & Params);
             void ParseUBX(const wxString & Params);
-            void ParseUUX(const wxString & Params);
-            void StatusChanged(const wxString & Params);
-            void MyStatusChanged(const wxString & Params);
-            void BuddyDisconnected(const wxString & Params);
-            void ParseRNG(const wxString & Params);
+            void ParseUUX(const wxArrayString & array); //const wxString & Params);
+            void StatusChanged(const wxArrayString & array); //const wxString & Params);
+            void MyStatusChanged(const wxArrayString & array); //const wxString & Params);
+            void BuddyDisconnected(const wxArrayString & array);
+            void ParseRNG(const wxArrayString & array); //const wxString & Params);
             
-            void PersoInfo(const wxString & Params);
+            void PersoInfo(const wxArrayString & array); //const wxString & Params);
         
             wxString        m_command,
                             last_ubx,
