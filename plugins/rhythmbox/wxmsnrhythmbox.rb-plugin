@@ -1,0 +1,9 @@
+[RB Plugin]
+Loader=python
+Module=wxmsnrhythmbox
+IAge=1
+Name=wxMsn Rhythmbox Plugin
+Description=Plugin to show what you are listening in wxMsn
+Authors=Neil "Superna" Armstrong <superna@na-prod.com>
+Copyright=Copyright © 2006 Neil Armstrong
+Website=http://wxmsn.starnux.net/

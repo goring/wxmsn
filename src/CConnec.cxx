@@ -150,46 +150,47 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         //                        P2 = m_parse.GetString(i, 2);
 
         //cout << m_parse[i].mb_str(wxConvUTF8)  << endl;
+        //TODO: Change methods to MsnXXX(wxArrayString &array);
         wxLogMessage(_("%s"), m_parse[i].c_str());
         if(First.StartsWith(wxT("VER"))) //Send CVR Command
             MsnCVR();
         if(First.StartsWith(wxT("CVR"))) //Send USR Command
             MsnUSR();
         if(First.StartsWith(wxT("XFR"))) //Server Info (NS or SB)
-            if(!MsnXFR(m_parse[i]))
+            if(!MsnXFR(vecp))//m_parse[i]))
                 return;
         if(First.StartsWith(wxT("QNG")))
             SendEvent(wxMsnEvent());
         if(First.StartsWith(wxT("CHL")))
-            MsnChallenge(vecp[2]);
+            MsnChallenge(vecp);
         if(First.StartsWith(wxT("MSG")))
             SendEvent(wxMsnEvent(wxMsnEventConnectionP3));
         if(First.StartsWith(wxT("SYN")))
             SendEvent(wxMsnEvent(wxMsnEventConnectionP4));
         if(First.StartsWith(wxT("CHG")))
-            MyStatusChanged(m_parse[i]);
+            MyStatusChanged(vecp);
         /*{
             SendEvent(wxMsnEvent(wxMsnEventConnected));
             MsnConnected();
         }*/
         if(First.StartsWith(wxT("LST")))
-            BuddyList(m_parse[i]);
+            BuddyList(vecp);
         if(First.StartsWith(wxT("LSG")))
-            GroupList(m_parse[i]);
+            GroupList(vecp);
         if(First.StartsWith(wxT("ILN")))
-            BuddyOnline(m_parse[i]);
+            BuddyOnline(vecp);
         if(First.StartsWith(wxT("UBX")))
-            ParseUBX(m_parse[i]);
+            ParseUBX(m_parse[i]); //Exception, needs full string for server response
         if(First.StartsWith(wxT("UUX")))
-            ParseUUX(m_parse[i]);
+            ParseUUX(vecp);
         if(First.StartsWith(wxT("NLN")))
-            StatusChanged(m_parse[i]);
+            StatusChanged(vecp);
         if(First.StartsWith(wxT("FLN")))
-            BuddyDisconnected(vecp[1]);
+            BuddyDisconnected(vecp);
         if(First.StartsWith(wxT("PRP")))
-            PersoInfo(m_parse[i]);
+            PersoInfo(vecp);
         if(First.StartsWith(wxT("RNG")))
-            ParseRNG(m_parse[i]);
+            ParseRNG(vecp);
         if(First.StartsWith(wxT("<")))
         {
             wxString temp = m_parse[i].Mid( 0, m_parse[i].rfind(wxT(">")) );
@@ -246,22 +247,24 @@ void CLASS::MsnUSR()
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-bool CLASS::MsnXFR(const wxString & data)
+//bool CLASS::MsnXFR(const wxString & data)
+bool CLASS::MsnXFR(const wxArrayString & array)
 {
     // Separated ft for SB sessions requests
-    wxStringTokenizer StrTok(data);
-    StrTok.GetNextToken(); //XFR
-    StrTok.GetNextToken(); //n
-    wxString type = StrTok.GetNextToken(); //NS or SB
+    //wxStringTokenizer StrTok(data);
+    //array[0] StrTok.GetNextToken(); //XFR
+    //wxString rqNb = array[1];//StrTok.GetNextToken(); //n
+    wxString type = array[2]; //StrTok.GetNextToken(); //NS or SB
     if(type.IsSameAs(_T("NS")))
-        return ChangeServer(StrTok.GetNextToken()); //IP:PORT
+        return ChangeServer(array[3]); //StrTok.GetNextToken()); //IP:PORT
     else if(type.IsSameAs(_T("SB")))
     {
         //New SB session
         wxMsnEvent Event(wxMsnEventNewSbSession);
-        Event.Add(StrTok.GetNextToken()); //IP
-        Event.Add(StrTok.GetNextToken()); //CKI
-        Event.Add(StrTok.GetNextToken()); //n.n.n
+        Event.Add(array[1]); //Request Number
+        Event.Add(array[4]);//StrTok.GetNextToken()); //IP
+        Event.Add(array[5]);//StrTok.GetNextToken()); //CKI
+        Event.Add(array[6]);//StrTok.GetNextToken()); //n.n.n
         SendEvent(Event);
         return true;
     }
@@ -378,10 +381,10 @@ void CLASS::MsnFUSR()
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-void CLASS::MsnChallenge(const wxString & challenge)
+void CLASS::MsnChallenge(const wxArrayString & array)
 {
     m_command = wxString::Format(wxT("QRY %i %s 32\r\n%s"),
-                                 m_connum, MSN_CHALLENGE_PROD, MSN_Challenge(challenge).c_str() );
+                                 m_connum, MSN_CHALLENGE_PROD, MSN_Challenge(array[2]).c_str() );
     //cout << "Sending :" << m_command.mb_str(wxConvUTF8) << endl;
     wxLogMessage(_("Sending : %s"), m_command.c_str());
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
@@ -449,62 +452,55 @@ void CLASS::SetFName(wxString & Name)
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-void CLASS::BuddyList(const wxString & Params)
+void CLASS::BuddyList(const wxArrayString & array) //const wxString & Params)
 {
-    wxStringTokenizer StrTok(Params, wxT(" "));
-    StrTok.GetNextToken(); //LST
-    wxString Mail = StrTok.GetNextToken(); //N=mail
-    wxString FName = StrTok.GetNextToken(); //F=friendly name
-    StrTok.GetNextToken(); //C=Guid
-    wxString ListBit = StrTok.GetNextToken(); //List Position
+    // array[0]; LST
+    // array[1]; N=mail
+    // array[2]; F=friendly name
+    // array[3]; C=Guid
+    // array[4]; List Position
 
     wxMsnEvent Event(wxMsnEventNewContact);
-    Event.Add(Mail.Mid(2));
-    Event.Add(ListBit);
-    Event.Add(FName.Mid(2));
-    //Event.SetString(Mail.Mid(2) + _(";") + ListBit + _(";") + FName.Mid(2));
+    Event.Add(array[1].Mid(2));
+    Event.Add(array[4]);
+    Event.Add(array[2].Mid(2));
     SendEvent(Event);
 
-    if(StrTok.HasMoreTokens())
+    if(array.size() > 5)
     {
-        wxString Groups = StrTok.GetNextToken(); //Group Hashs
+        wxString Groups = array[5]; //Group Hashs
         Groups.Replace(wxT(","), wxT(";"));
         Event.SetId(wxMsnEventAssignGroup);
-        Event.Add(Mail.Mid(2));
+        Event.Add(array[1].Mid(2));
         Event.SetString(Groups);
         SendEvent(Event);
     }
 
 }
 
-void CLASS::GroupList(const wxString & Params)
+void CLASS::GroupList(const wxArrayString & array) //const wxString & Params)
 {
-    wxStringTokenizer StrTok(Params);
-    StrTok.GetNextToken(); //LSG
-    wxString Name = StrTok.GetNextToken(); //Name
-    wxString Hash = StrTok.GetNextToken(); //Hash
+    //array[0]; LSG
+    //array[1]; Name
+    //array[2]; Hash
     wxMsnEvent Event(wxMsnEventNewGroup);
-    Event.Add(Name);
-    Event.Add(Hash);
-    //Event.SetString(Name + _(";") + Hash);
+    Event.Add(array[1]);
+    Event.Add(array[2]);
     SendEvent(Event);
 }
 
-void CLASS::BuddyOnline(const wxString & Params)
+void CLASS::BuddyOnline(const wxArrayString & array) //const wxString & Params)
 {
-    wxStringTokenizer StrTok(Params);
-    StrTok.GetNextToken(); //ILN
-    StrTok.GetNextToken(); //num
-
-    wxString Status = StrTok.GetNextToken(); //status
-    wxString ID = StrTok.GetNextToken(); //mail
-    wxString FriendlyName = StrTok.GetNextToken(); //mail
+    //array[0]; ILN
+    //array[1]; num
+    //array[2]; Status
+    //array[3]; ID
+    //array[4]; FriendlyName
 
     wxMsnEvent Event(wxMsnEventContactConnected);
-    //Event.SetString(ID + _(";") + Status + _(";") + FriendlyName);
-    Event.Add(ID);
-    Event.Add(Status);
-    Event.Add(FriendlyName);
+    Event.Add(array[3]);
+    Event.Add(array[2]);
+    Event.Add(array[4]);
     SendEvent(Event);
 }
 
@@ -597,14 +593,13 @@ void CLASS::ParseUBX(const wxString & Params)
     }
     else
     {
-        wxString mail;
         wxStringTokenizer StrTok(Params);
         StrTok.GetNextToken(); //UBX
         last_ubx = StrTok.GetNextToken(); //mail
     }
 }
 
-void CLASS::ParseUUX(const wxString & Params)
+void CLASS::ParseUUX(const wxArrayString & array) //const wxString & Params)
 {
     // TODO Check Response
     wxMsnEvent Event(wxMsnEventPersoPStatus);
@@ -612,68 +607,59 @@ void CLASS::ParseUUX(const wxString & Params)
     SendEvent(Event);
 }
 
-void CLASS::StatusChanged(const wxString & Params)
+void CLASS::StatusChanged(const wxArrayString & array) //const wxString & Params)
 {
-    //wxMsnEventContactStatus
-    wxStringTokenizer StrTok(Params);
-    StrTok.GetNextToken(); //NLN
-    wxString Status = StrTok.GetNextToken(); //Status
-    wxString Mail = StrTok.GetNextToken(); //Mail
-    wxString FName = StrTok.GetNextToken(); //Friendly Name
+    //array[0]; NLN
+    //array[1]; Status
+    //array[2]; Mail
+    //array[3]; Friendly Name
     wxMsnEvent Event(wxMsnEventContactStatus);
-    Event.Add(Mail);
-    Event.Add(Status);
-    Event.Add(FName);
-    //Event.SetString(Mail + _(";") + Status + _(";") + FName);
+    Event.Add(array[2]);
+    Event.Add(array[1]);
+    Event.Add(array[3]);
     SendEvent(Event);
 }
 
-void CLASS::MyStatusChanged(const wxString & Params)
+void CLASS::MyStatusChanged(const wxArrayString & array) //const wxString & Params)
 {
-    wxStringTokenizer StrTok(Params);
-    StrTok.GetNextToken();
-    StrTok.GetNextToken();
-    wxString Status = StrTok.GetNextToken(); //Status
-    //wxLogMessage(_("Status changed %s"), Status.c_str());
     wxMsnEvent Event(wxMsnEventConnected);
-    Event.SetString(Status);
+    Event.SetString(array[2]); //Status);
     SendEvent(Event);
     m_data->SetConnected(true);
 }
 
-void CLASS::ParseRNG(const wxString & Params)
+void CLASS::ParseRNG(const wxArrayString & array) //const wxString & Params)
 {
-    wxStringTokenizer StrTok(Params);
     wxMsnEvent Event(wxMsnEventChatInvitation);
-    StrTok.GetNextToken(); //RNG
-    Event.Add(StrTok.GetNextToken()); //id
-    Event.Add(StrTok.GetNextToken()); //address
-    StrTok.GetNextToken();
-    Event.Add(StrTok.GetNextToken()); //id
-    Event.Add(StrTok.GetNextToken()); //email
-    Event.Add(StrTok.GetNextToken()); //name
-    SendEvent(Event);    
+    //array[0] RNG
+    Event.Add(array[1]); //id
+    Event.Add(array[2]); //address
+    //array[3] CKI
+    Event.Add(array[4]); //id
+    Event.Add(array[5]); //email
+    Event.Add(array[6]); //name
+    SendEvent(Event);
 }
 
-void CLASS::PersoInfo(const wxString & Params)
+void CLASS::PersoInfo(const wxArrayString & array) //const wxString & Params)
 {
-    //wxMsnEventPersoInfo
-    wxStringTokenizer StrTok(Params);
-    StrTok.GetNextToken(); //PRP
-    wxString Info = StrTok.GetNextToken(); //MFN/PHW/HSB/WWE
-    if(Info == wxT("MFN") || StrTok.GetNextToken() == wxT("MFN"))
-    {
-        wxString FName = StrTok.GetNextToken(); //Friendly Name
-        wxMsnEvent Event(wxMsnEventPersoInfo);
-        Event.SetString(FName);
-        SendEvent(Event);
-    }
+    //array[0]; PRP
+    //array[1]; num or MFN/PHW/HSB/WWE
+    //array[2]; MFN or Name
+    //array[3]; Name or none
+    
+    wxMsnEvent Event(wxMsnEventPersoInfo);
+    if(array[1] == wxT("MFN"))
+        Event.SetString(array[2]);
+    else
+        Event.SetString(array[3]);
+    SendEvent(Event);
 }
 
-void CLASS::BuddyDisconnected(const wxString & Params)
+void CLASS::BuddyDisconnected(const wxArrayString & array)
 {
     wxMsnEvent Event(wxMsnEventContactDisconnected);
-    Event.SetString(Params);
+    Event.SetString(array[1]);
     SendEvent(Event);
 }
 
