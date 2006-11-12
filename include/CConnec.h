@@ -86,32 +86,27 @@ namespace nsCore
             void SendEvent(nsEvents::wxMsnEvent Event);
             
             void SendLog(const wxString & Str) { SendEvent(nsEvents::wxMsnEvent(Str)); }
-            //void SendTLog(const wxString & Str) { SendEvent(wxMsnEvent(wxNow() + _(" : ") + Str)); }
             void SendTLog(const wxString & Str) { wxLogMessage(Str); }
             
-            //MSN Commands
+            //MSN Methods
             void MsnVER();
-            void MsnCVR();
-            void MsnUSR();
-            //bool MsnXFR(const wxString & data);
+            void MsnCVR(const wxArrayString & array);
+            void MsnUSR(const wxArrayString & array);
             bool MsnXFR(const wxArrayString & array);
             bool ChangeServer(const wxString & Server);
             bool PassportIdent(const wxString & lcString);
-            void MsnFUSR();
-            //void MsnConnected();
+            void MsnFUSR(); //Exception
             void MsnChallenge(const wxArrayString & array);
-            
-            void BuddyList(const wxArrayString & array); //const wxString & Params);
-            void GroupList(const wxArrayString & array); //const wxString & Params);
-            void BuddyOnline(const wxArrayString & array); //const wxString & Params);
-            void ParseUBX(const wxString & Params);
-            void ParseUUX(const wxArrayString & array); //const wxString & Params);
-            void StatusChanged(const wxArrayString & array); //const wxString & Params);
-            void MyStatusChanged(const wxArrayString & array); //const wxString & Params);
+            void BuddyList(const wxArrayString & array); 
+            void GroupList(const wxArrayString & array);
+            void BuddyOnline(const wxArrayString & array);
+            void ParseUBX(const wxString & Params); //Exception
+            void ParseUUX(const wxArrayString & array);
+            void StatusChanged(const wxArrayString & array);
+            void MyStatusChanged(const wxArrayString & array);
             void BuddyDisconnected(const wxArrayString & array);
-            void ParseRNG(const wxArrayString & array); //const wxString & Params);
-            
-            void PersoInfo(const wxArrayString & array); //const wxString & Params);
+            void ParseRNG(const wxArrayString & array);
+            void PersoInfo(const wxArrayString & array);
         
             wxString        m_command,
                             last_ubx,

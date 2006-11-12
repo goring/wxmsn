@@ -117,7 +117,6 @@ void CLASS::Connect()
 
 void CLASS::InputEvent(wxSocketEvent & Event)
 {
-    //SendTLog(_("Input on the Socket"));
     switch(Event.GetSocketEvent())
     {
     case wxSOCKET_LOST:
@@ -129,34 +128,26 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         }
         break;
     case wxSOCKET_INPUT :
-        //SendTLog(_("Input on the Socket"));
         break;
     default:
         SendTLog(_("Other Socket Event"));
-        //cout << "SockEvent ID :" << Event.GetSocketEvent() << endl;
         wxLogMessage(_("SockEvent ID : %i"), Event.GetSocketEvent());
         break;
     }
 
-    //Tests What to do
     m_parse.Parse();
-    //cout << "Entering Loop for " << m_parse.Lines() << " lines" << endl;
     for(size_t i = 0 ; i < m_parse.Lines() ; ++i)
     {
         wxArrayString vecp = m_parse.GetWords(i);
-        wxString   First = vecp[0];//m_parse.GetString(i, 0),
-        //                   P1 = m_parse.GetString(i, 1),
-        //                        P2 = m_parse.GetString(i, 2);
+        wxString   First = vecp[0];
 
-        //cout << m_parse[i].mb_str(wxConvUTF8)  << endl;
-        //TODO: Change methods to MsnXXX(wxArrayString &array);
         wxLogMessage(_("%s"), m_parse[i].c_str());
         if(First.StartsWith(wxT("VER"))) //Send CVR Command
-            MsnCVR();
+            MsnCVR(vecp);
         if(First.StartsWith(wxT("CVR"))) //Send USR Command
-            MsnUSR();
+            MsnUSR(vecp);
         if(First.StartsWith(wxT("XFR"))) //Server Info (NS or SB)
-            if(!MsnXFR(vecp))//m_parse[i]))
+            if(!MsnXFR(vecp))
                 return;
         if(First.StartsWith(wxT("QNG")))
             SendEvent(wxMsnEvent());
@@ -168,10 +159,6 @@ void CLASS::InputEvent(wxSocketEvent & Event)
             SendEvent(wxMsnEvent(wxMsnEventConnectionP4));
         if(First.StartsWith(wxT("CHG")))
             MyStatusChanged(vecp);
-        /*{
-            SendEvent(wxMsnEvent(wxMsnEventConnected));
-            MsnConnected();
-        }*/
         if(First.StartsWith(wxT("LST")))
             BuddyList(vecp);
         if(First.StartsWith(wxT("LSG")))
@@ -208,7 +195,6 @@ void CLASS::InputEvent(wxSocketEvent & Event)
         if(m_socket.Error() && m_socket.LastError() != wxSOCKET_WOULDBLOCK)
         {
             SendTLog(_("A Socket Error Occured, aborting"));
-            //cout << "Error Occured : " << m_socket.LastError() << endl;
             wxLogError(_("Socket Error : %i"), m_socket.LastError());
             //m_socket.Close();
             return;
@@ -216,47 +202,50 @@ void CLASS::InputEvent(wxSocketEvent & Event)
     }
 }
 
-void CLASS::MsnVER()
+void CLASS::MsnVER() //Exception, first call for connection
 {
     SendTLog(_("Sending VER"));
     ++m_connum;
     m_command = wxString::Format(PROTO_VER, m_connum );
-    //cout << "Sending :" << m_command.mb_str(wxConvUTF8) << endl;
     wxLogMessage(_("Sending : %s"), m_command.c_str());
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-void CLASS::MsnCVR()
+void CLASS::MsnCVR(const wxArrayString & array)
 {
     SendTLog(_("Sending CVR"));
     ++m_connum;
     m_command = wxString::Format(PROTO_CVR, m_connum, m_data->GetMail().c_str() );
-    //cout << "Sending :" << m_command.mb_str(wxConvUTF8) << endl;
     wxLogMessage(_("Sending : %s"), m_command.c_str());
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-void CLASS::MsnUSR()
+void CLASS::MsnUSR(const wxArrayString & array)
 {
     SendTLog(_("Sending USR"));
     ++m_connum;
     m_command = wxString::Format(PROTO_USR, m_connum, m_data->GetMail().c_str() );
-    //cout << "Sending :" << m_command.mb_str(wxConvUTF8) << endl;
     wxLogMessage(_("Sending : %s"), m_command.c_str());
     m_socket.Write(m_command.mb_str(wxConvUTF8), m_command.size());
 }
 
-//bool CLASS::MsnXFR(const wxString & data)
 bool CLASS::MsnXFR(const wxArrayString & array)
 {
     // Separated ft for SB sessions requests
     //wxStringTokenizer StrTok(data);
     //array[0] StrTok.GetNextToken(); //XFR
     //wxString rqNb = array[1];//StrTok.GetNextToken(); //n
+
+    if(array.size() < 4)
+    { 
+        SendTLog(_("MsnXFR Protocol Error"));
+        return false;
+    }
+
     wxString type = array[2]; //StrTok.GetNextToken(); //NS or SB
     if(type.IsSameAs(_T("NS")))
         return ChangeServer(array[3]); //StrTok.GetNextToken()); //IP:PORT
-    else if(type.IsSameAs(_T("SB")))
+    else if(type.IsSameAs(_T("SB")) && array.size() > 6)
     {
         //New SB session
         wxMsnEvent Event(wxMsnEventNewSbSession);
@@ -459,6 +448,12 @@ void CLASS::BuddyList(const wxArrayString & array) //const wxString & Params)
     // array[3]; C=Guid
     // array[4]; List Position
 
+    if(array.size() < 5)
+    {
+        SendTLog(_("BuddyList Protocol Error"));
+        return;
+    }
+
     wxMsnEvent Event(wxMsnEventNewContact);
     Event.Add(array[1].Mid(2));
     Event.Add(array[4]);
@@ -482,10 +477,14 @@ void CLASS::GroupList(const wxArrayString & array) //const wxString & Params)
     //array[0]; LSG
     //array[1]; Name
     //array[2]; Hash
-    wxMsnEvent Event(wxMsnEventNewGroup);
-    Event.Add(array[1]);
-    Event.Add(array[2]);
-    SendEvent(Event);
+    if(array.size() >= 3)
+    {
+        wxMsnEvent Event(wxMsnEventNewGroup);
+        Event.Add(array[1]);
+        Event.Add(array[2]);
+        SendEvent(Event);
+    }
+    else SendTLog(_("GroupList Protocol Error"));
 }
 
 void CLASS::BuddyOnline(const wxArrayString & array) //const wxString & Params)
@@ -495,12 +494,16 @@ void CLASS::BuddyOnline(const wxArrayString & array) //const wxString & Params)
     //array[2]; Status
     //array[3]; ID
     //array[4]; FriendlyName
-
-    wxMsnEvent Event(wxMsnEventContactConnected);
-    Event.Add(array[3]);
-    Event.Add(array[2]);
-    Event.Add(array[4]);
-    SendEvent(Event);
+    
+    if(array.size() >= 5)
+    {   
+        wxMsnEvent Event(wxMsnEventContactConnected);
+        Event.Add(array[3]);
+        Event.Add(array[2]);
+        Event.Add(array[4]);
+        SendEvent(Event);
+    }
+    else SendTLog(_("BuddyOnline Protocol Error"));
 }
 
 void CLASS::SetStatus(ONLINE_STATUS status)
@@ -612,32 +615,44 @@ void CLASS::StatusChanged(const wxArrayString & array) //const wxString & Params
     //array[1]; Status
     //array[2]; Mail
     //array[3]; Friendly Name
-    wxMsnEvent Event(wxMsnEventContactStatus);
-    Event.Add(array[2]);
-    Event.Add(array[1]);
-    Event.Add(array[3]);
-    SendEvent(Event);
+    if(array.size() >= 4)
+    {
+        wxMsnEvent Event(wxMsnEventContactStatus);
+        Event.Add(array[2]);
+        Event.Add(array[1]);
+        Event.Add(array[3]);
+        SendEvent(Event);
+    }
+    else SendTLog(_("StatusChanged Protocol Error"));
 }
 
 void CLASS::MyStatusChanged(const wxArrayString & array) //const wxString & Params)
 {
-    wxMsnEvent Event(wxMsnEventConnected);
-    Event.SetString(array[2]); //Status);
-    SendEvent(Event);
-    m_data->SetConnected(true);
+    if(array.size() >= 3)
+    {
+        wxMsnEvent Event(wxMsnEventConnected);
+        Event.SetString(array[2]); //Status);
+        SendEvent(Event);
+        m_data->SetConnected(true);
+    }
+    else SendTLog(_("MyStatusChanged Protocol Error"));
 }
 
 void CLASS::ParseRNG(const wxArrayString & array) //const wxString & Params)
 {
-    wxMsnEvent Event(wxMsnEventChatInvitation);
-    //array[0] RNG
-    Event.Add(array[1]); //id
-    Event.Add(array[2]); //address
-    //array[3] CKI
-    Event.Add(array[4]); //id
-    Event.Add(array[5]); //email
-    Event.Add(array[6]); //name
-    SendEvent(Event);
+    if(array.size() >= 7)
+    {
+        wxMsnEvent Event(wxMsnEventChatInvitation);
+        //array[0] RNG
+        Event.Add(array[1]); //id
+        Event.Add(array[2]); //address
+        //array[3] CKI
+        Event.Add(array[4]); //id
+        Event.Add(array[5]); //email
+        Event.Add(array[6]); //name
+        SendEvent(Event);
+    }
+    else SendTLog(_("ParseRNG Protocol Error")); 
 }
 
 void CLASS::PersoInfo(const wxArrayString & array) //const wxString & Params)
@@ -646,12 +661,17 @@ void CLASS::PersoInfo(const wxArrayString & array) //const wxString & Params)
     //array[1]; num or MFN/PHW/HSB/WWE
     //array[2]; MFN or Name
     //array[3]; Name or none
-    
+
     wxMsnEvent Event(wxMsnEventPersoInfo);
-    if(array[1] == wxT("MFN"))
+    if(array[1] == wxT("MFN") && array.size()>2)
         Event.SetString(array[2]);
-    else
+    else if(array[2] == wxT("MFN") && array.size()>3)
         Event.SetString(array[3]);
+    else
+    {
+        SendTLog(_("PersoInfo Protocol Warning"));
+        return;
+    }
     SendEvent(Event);
 }
 

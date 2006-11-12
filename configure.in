@@ -27,6 +27,7 @@ AM_PROG_LIBTOOL
 
 AC_ARG_ENABLE(wxconfig26, [  --disable-wxconfig26   Disables test for wx-config2.6, useful in Cross-Compilation], disable_wxconfig26="yes", disable )
 AC_ARG_ENABLE(plugins, [  --disable-plugins Disables plugins building], disable_plugins="yes", disable )
+AC_ARG_ENABLE(wxdebug, [  --enable-debug   Enable Debugging], enable_debug="yes", enable )
 
 AM_OPTIONS_WXCONFIG
 if test "x$disable_wxconfig26" = "x" ; then
@@ -37,7 +38,13 @@ if test "x$disable_wxconfig26" = "x" ; then
 	fi
 fi
 
-AM_PATH_WXCONFIG([2.6.0], [wxWin=1], [wxWin=0], [--unicode])
+if test "x$enable_debug" = "x" ; then
+    AM_PATH_WXCONFIG([2.6.0], [wxWin=1], [wxWin=0], [--unicode])
+else
+    CFLAGS="-g2 -ggdb"
+    CXXFLAGS="-g2 -ggdb"
+    AM_PATH_WXCONFIG([2.6.0], [wxWin=1], [wxWin=0], [--unicode --debug=yes])
+fi
 
 if test "$wxWin" != 1; then
 	AC_MSG_ERROR([
